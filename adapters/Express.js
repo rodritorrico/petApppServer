@@ -12,6 +12,7 @@ app.use(cors());
 var serverPort = process.env.PORT || '3000';
 app.set('port', serverPort);
 
+
 class Express{
 
     constructor(){
@@ -28,7 +29,8 @@ class Express{
     }
 
     async listenPort(port){
-        app.listen(port,()=>{
+        
+        app.listen(serverPort,()=>{
             console.log("Listening port: " + port);
         })
     }
