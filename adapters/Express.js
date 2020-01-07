@@ -24,7 +24,7 @@ class Express{
     async defineThingRoutes(){
         let thingController =  new ThingController(this.dataBaseRepository);
 
-        app.get('/hola',(request,response)=>{
+        app.get('/',(request,response)=>{
             response.send('hola');
         })
     
