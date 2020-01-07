@@ -9,35 +9,54 @@ app.use(bodyParser.text());
 app.use(cors());
 
 
-var serverPort = process.env.PORT || '3000';
+let serverPort = process.env.PORT || '3000'; 
 app.set('port', serverPort);
 
-
+let ThingController = require('../controllers/ThingController');
+let WebController = require('../controllers/WebController');
 class Express{
 
-    constructor(){
-      
+    constructor(dataBaseRepository){
+        this.dataBaseRepository = dataBaseRepository;
     }
 
-    async defineRoutes(){
+
+    async defineThingRoutes(){
+        let thingController =  new ThingController(this.dataBaseRepository);
     
-        app.get("/hola",(request, response)=>{
-            response.send('hola');
+        app.get('/feedPet',(request, response)=>{
+            thingController.feedPet(request,response);
         })
 
+        app.post('/thingData', (request, response)=>{
+            thingController.registerData(request,response);
+        })
+
+    }
+
+    async defineWebRoutes(){
+        let webController = new WebController(this.dataBaseRepository);
+
+        app.get('/getFeedTimes', (request, response)=>{
+            webController.getFeedTimes(request,response);
+        })
+
+        app.get('/getPlatePercentage', (request, response) =>{
+            webController.getPlatePercentage(request,response);
+        })
 
     }
 
     async listenPort(port){
-        
         app.listen(serverPort,()=>{
-            console.log("Listening port: " + port);
+            console.log("Listening port: " + serverPort);
         })
     }
 
     async initializeServer(port){
         app.options('*',cors());
-        this.defineRoutes();
+        this.defineThingRoutes();
+        this.defineWebRoutes();
         this.listenPort(port);
     }
 }

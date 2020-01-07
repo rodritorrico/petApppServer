@@ -1,14 +1,17 @@
 const Express = require('./adapters/Express');
-const ServerRepository = require('./repositories/ServerRepository');
 const Mongo = require('./adapters/Mongo');
 
-var mongo = new Mongo('mongodb+srv://admin:admin@petapp-cbmfv.mongodb.net/test?retryWrites=true&w=majority','petApp');
+const ServerRepository = require('./repositories/ServerRepository');
+const DataBaseRepository = require('./repositories/DataBaseRepository');
+
+var mongo = new Mongo('mongodb+srv://admin:admin@cluster0-bww9t.mongodb.net/test?retryWrites=true&w=majority','petApp');
 var mongoConected = mongo.startConection();
 
 
 
 mongoConected.then(()=>{
-    let express = new Express();
+    let dataBaseRepository = new DataBaseRepository(mongo)
+    let express = new Express(dataBaseRepository);
     let serverRepository= new ServerRepository(express);
     serverRepository.initializeServer(3000);
 
