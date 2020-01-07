@@ -23,6 +23,10 @@ class Express{
 
     async defineThingRoutes(){
         let thingController =  new ThingController(this.dataBaseRepository);
+
+        app.get('/hola',(request,response)=>{
+            response.send('hola');
+        })
     
         app.get('/feedPet',(request, response)=>{
             thingController.feedPet(request,response);
