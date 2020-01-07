@@ -13,6 +13,6 @@ mongoConected.then(()=>{
     let dataBaseRepository = new DataBaseRepository(mongo)
     let express = new Express(dataBaseRepository);
     let serverRepository= new ServerRepository(express);
-    serverRepository.initializeServer(3000);
-
+    let serverPort = process.env.PORT || '3000'; 
+    serverRepository.initializeServer(serverPort);
 })

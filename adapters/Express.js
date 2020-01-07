@@ -9,8 +9,8 @@ app.use(bodyParser.text());
 app.use(cors());
 
 
-let serverPort = process.env.PORT || '3000'; 
-app.set('port', serverPort);
+
+
 
 let ThingController = require('../controllers/ThingController');
 let WebController = require('../controllers/WebController');
@@ -52,8 +52,9 @@ class Express{
     }
 
     async listenPort(port){
-        app.listen(serverPort,()=>{
-            console.log("Listening port: " + serverPort);
+        app.set('port', port);
+        app.listen(port,()=>{
+            console.log("Listening port: " + port);
         })
     }
 
@@ -61,6 +62,7 @@ class Express{
         app.options('*',cors());
         this.defineThingRoutes();
         this.defineWebRoutes();
+
         this.listenPort(port);
     }
 }
