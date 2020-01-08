@@ -5,7 +5,9 @@ const bodyParser = require('body-parser');
 app.use(bodyParser.json());
 
 const cors = require('cors');
+
 app.use(bodyParser.text());
+app.use(bodyParser.json());
 app.use(cors());
 
 
@@ -24,10 +26,6 @@ class Express{
     async defineThingRoutes(){
         let thingController =  new ThingController(this.dataBaseRepository);
 
-        app.get('/',(request,response)=>{
-            response.send('hola');
-        })
-    
         app.get('/feedPet',(request, response)=>{
             thingController.feedPet(request,response);
         })
@@ -47,6 +45,11 @@ class Express{
 
         app.get('/getPlatePercentage', (request, response) =>{
             webController.getPlatePercentage(request,response);
+        })
+
+        app.post('/giveFood', (request,response)=>{
+            console.log('llega');
+            webController.giveFood(request,response);
         })
 
     }

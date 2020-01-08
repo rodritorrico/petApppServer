@@ -14,7 +14,7 @@ class ThingController{
 
     registerData(request,response) {
         let thingData = request.body;
-        this.dataBaseRepository.saveObject(thingData,'ThingData');
+        this.dataBaseRepository.saveObject({data: thingData},'ThingData');
         response.sendStatus(200);
     }
 }
