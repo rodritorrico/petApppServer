@@ -2,7 +2,7 @@ const Express = require('./adapters/Express');
 const ServerRepository = require('./repositories/ServerRepository');
 const Mongo = require('./adapters/Mongo');
 
-var mongo = new Mongo('mongodb+srv://admin:admin@petapp-cbmfv.mongodb.net/test?retryWrites=true&w=majority','petApp');
+var mongo = new Mongo('mongodb+srv://admin:admin@cluster0-bww9t.mongodb.net/test?retryWrites=true&w=majority','petAppDB');
 var mongoConected = mongo.startConection();
 
 
