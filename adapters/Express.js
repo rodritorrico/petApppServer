@@ -13,8 +13,9 @@ app.use(cors());
 
 class Express{
 
-    constructor(){
+    constructor(dataBase){
         this.userWantsToFeedPet = false;
+        this.dataBase = this.dataBase;
     }
 
     async defineRoutes(){
@@ -29,6 +30,12 @@ class Express{
             }else{
                 response.send(false);
             }
+        })
+
+        app.post('/thingData', (request, response)=>{
+            let thingData = request.body;
+            this.dataBase.registerObject({data: thingData},'ThingData');
+            response.sendStatus(200);
         })
 
 
