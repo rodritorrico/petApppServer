@@ -23,6 +23,10 @@ class Express{
             response.send('hola');
         })
 
+        app.get("/feedCat",(request, response)=>{
+            response.send('chau');
+        })
+
 
     }
 
