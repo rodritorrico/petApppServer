@@ -16,6 +16,9 @@
     "express": "^4.17.1",
     "mongodb": "^3.4.1"
   },
+  "engines": {
+    "node": "12.11.1"
+  },
   "author": "",
   "license": "ISC"
 }

@@ -28,8 +28,8 @@ class Express{
     }
 
     async listenPort(port){
-        app.listen(port,()=>{
-            console.log("Listening port: " + port);
+        app.listen(serverPort,()=>{
+            console.log("Listening port: " + serverPort);
         })
     }
 
