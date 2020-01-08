@@ -10,6 +10,7 @@ var mongoConected = mongo.startConection();
 mongoConected.then(()=>{
     let express = new Express();
     let serverRepository= new ServerRepository(express);
-    serverRepository.initializeServer(3000);
+    var serverPort = process.env.PORT || '3000';
+    serverRepository.initializeServer(serverPort);
 
 })

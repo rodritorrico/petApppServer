@@ -9,8 +9,7 @@ app.use(bodyParser.text());
 app.use(cors());
 
 
-var serverPort = process.env.PORT || '3000';
-app.set('port', serverPort);
+
 
 class Express{
 
@@ -28,8 +27,9 @@ class Express{
     }
 
     async listenPort(port){
-        app.listen(serverPort,()=>{
-            console.log("Listening port: " + serverPort);
+        app.set('port', port);
+        app.listen(port,()=>{
+            console.log("Listening port: " + port);
         })
     }
 
