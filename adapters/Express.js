@@ -15,7 +15,7 @@ class Express{
 
     constructor(dataBase){
         this.userWantsToFeedPet = false;
-        this.dataBase = dataBase;
+        // this.dataBase = dataBase;
     }
 
     async defineRoutes(){
@@ -34,7 +34,7 @@ class Express{
 
         app.post('/thingData', (request, response)=>{
             let thingData = request.body;
-            this.dataBase.registerObject({data: thingData},'thingData');
+            // this.dataBase.registerObject({data: thingData},'thingData');
             response.sendStatus(200);
         })
 
