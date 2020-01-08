@@ -14,7 +14,7 @@ app.use(cors());
 class Express{
 
     constructor(){
-      
+        this.userWantsToFeedPet = false;
     }
 
     async defineRoutes(){
@@ -23,8 +23,12 @@ class Express{
             response.send('hola');
         })
 
-        app.get("/feedCat",(request, response)=>{
-            response.send('chau');
+        app.get('/feedPet',(request, response)=>{
+            if(this.userWantsToFeedPet){
+                response.send(true);
+            }else{
+                response.send(false);
+            }
         })
 
 
