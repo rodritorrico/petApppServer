@@ -32,11 +32,11 @@ class Express{
             }
         })
 
-        app.post('/thingData', (request, response)=>{
-            let thingData = request.body;
-            // this.dataBase.registerObject({data: thingData},'thingData');
-            response.sendStatus(200);
-        })
+        // app.post('/thingData', (request, response)=>{
+        //     let thingData = request.body;
+        //     // this.dataBase.registerObject({data: thingData},'thingData');
+        //     response.sendStatus(200);
+        // })
 
 
     }
